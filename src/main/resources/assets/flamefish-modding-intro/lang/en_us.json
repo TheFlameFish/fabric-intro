@@ -1,5 +1,11 @@
 {
   "item.flamefish-modding-intro.coolarg_item": "Coolarg Item",
   "item.flamefish-modding-intro.suspicious_substance": "Suspicious Substance",
+  "item.flamefish-modding-intro.guidite_sword": "Guidite Sword",
+  "item.flamefish-modding-intro.guidite_chestplate": "Guidite Chestplate",
+  "item.flamefish-modding-intro.guidite_boots": "Guidite Boots",
+  "item.flamefish-modding-intro.guidite_leggings": "Guidite Leggings",
+  "item.flamefish-modding-intro.guidite_helmet": "Guidite Helmet",
+  "item.flamefish-modding-intro.lightning_stick": "Lightning Stick",
   "itemGroup.flamefish-modding-intro": "Intro Mod"
 }
