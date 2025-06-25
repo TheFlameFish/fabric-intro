@@ -1,5 +1,6 @@
 package io.github.theflamefish;
 
+import io.github.theflamefish.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,5 +1,6 @@
-package io.github.theflamefish;
+package io.github.theflamefish.item;
 
+import io.github.theflamefish.FlameFishModdingIntro;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -47,26 +48,39 @@ public class ModItems {
    *
    * @param item The item to register. Instance of a class that extends Item.
    * @param id The unique identifier of the item. This'll be concatenated to the modid.
+   * @param itemGroupKey The item group (creative tab) for this item to be added to. Nullable.
    * @return The registered item, cast to the same class as provided.
    */
-  public static <T extends Item> T register(String id, T item) {
+  public static <T extends Item> T register(
+      String id, T item, RegistryKey<ItemGroup> itemGroupKey) {
     // fullID is what'll define an item as, for example, "flamefish-modding-intro:coolarg-item"
     Identifier fullID = new Identifier(FlameFishModdingIntro.MOD_ID, id);
 
-    return Registry.register(Registries.ITEM, fullID, item);
+    T registeredItem = Registry.register(Registries.ITEM, fullID, item);
+
+    if (itemGroupKey != null) {
+      ItemGroupEvents.modifyEntriesEvent(itemGroupKey)
+          .register((itemGroup) -> itemGroup.add(registeredItem));
+    }
+
+    return registeredItem;
+  }
+
+  /**
+   * Register an item & add it to the primary creative tab
+   *
+   * @param item The item to register. Instance of a class that extends Item.
+   * @param id The unique identifier of the item. This'll be concatenated to the modid.
+   * @return The registered item, cast to the same class as provided.
+   */
+  public static <T extends Item> T register(String id, T item) {
+    return register(id, item, CUSTOM_GROUP_KEY);
   }
 
   /** Initialize all modded items */
   // Ig this needs to be called for the static fields to be defined?
   public static void initialize() {
     Registry.register(Registries.ITEM_GROUP, CUSTOM_GROUP_KEY, CUSTOM_GROUP);
-
-    ItemGroupEvents.modifyEntriesEvent(CUSTOM_GROUP_KEY)
-        .register(
-            (itemGroup) -> {
-              itemGroup.add(COOLARG_ITEM);
-              itemGroup.add(SUSPICIOUS_SUBSTANCE);
-            });
 
     // 30% chance of increasing composter level
     CompostingChanceRegistry.INSTANCE.add(SUSPICIOUS_SUBSTANCE, 0.3f);
