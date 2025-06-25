@@ -80,6 +80,8 @@ public class ModItems {
   /** Initialize all modded items */
   // Ig this needs to be called for the static fields to be defined?
   public static void initialize() {
+    ModTools.initialize();
+
     Registry.register(Registries.ITEM_GROUP, CUSTOM_GROUP_KEY, CUSTOM_GROUP);
 
     // 30% chance of increasing composter level
