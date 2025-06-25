@@ -20,6 +20,9 @@
     ],
     "client": [
       "io.github.theflamefish.FlameFishModdingIntroClient"
+    ],
+    "fabric-datagen": [
+      "io.github.theflamefish.datagen.FlameFishModdingIntroDataGenerator"
     ]
   },
   "mixins": [

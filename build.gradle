@@ -88,6 +88,12 @@ publishing {
     }
 }
 
+fabricApi {
+    configureDataGeneration() {
+        client = true
+    }
+}
+
 project.compileJava.dependsOn(spotlessApply)
 spotless {
     java {
