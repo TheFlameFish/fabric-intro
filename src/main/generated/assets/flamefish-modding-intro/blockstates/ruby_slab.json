@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "flamefish-modding-intro:block/ruby_slab"
+    },
+    "type=double": {
+      "model": "flamefish-modding-intro:block/ruby_block"
+    },
+    "type=top": {
+      "model": "flamefish-modding-intro:block/ruby_slab_top"
+    }
+  }
+}

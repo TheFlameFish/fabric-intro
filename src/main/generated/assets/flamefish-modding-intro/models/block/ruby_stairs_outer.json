@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "flamefish-modding-intro:block/ruby_block",
+    "side": "flamefish-modding-intro:block/ruby_block",
+    "top": "flamefish-modding-intro:block/ruby_block"
+  }
+}

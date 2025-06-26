@@ -16,5 +16,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
   @Override
   protected void configure(RegistryWrapper.WrapperLookup arg) {
     getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(ModBlocks.CONDENSED_DIRT);
+
+    getOrCreateTagBuilder(BlockTags.FENCES).add(ModBlocks.RUBY_FENCE);
+    getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(ModBlocks.RUBY_FENCE_GATE);
+    getOrCreateTagBuilder(BlockTags.WALLS).add(ModBlocks.RUBY_WALL);
   }
 }

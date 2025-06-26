@@ -1,6 +1,5 @@
 package io.github.theflamefish.datagen;
 
-import io.github.theflamefish.FlameFishModdingIntro;
 import io.github.theflamefish.block.ModBlocks;
 import io.github.theflamefish.item.LightningStick;
 import io.github.theflamefish.item.ModArmors;
@@ -8,12 +7,8 @@ import io.github.theflamefish.item.ModItems;
 import io.github.theflamefish.item.ModTools;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Items;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 public class ModModelProvider extends FabricModelProvider {
   public ModModelProvider(FabricDataOutput output) {
@@ -24,10 +19,24 @@ public class ModModelProvider extends FabricModelProvider {
   public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CONDENSED_DIRT);
 
-    // FIXME No rotate. I may have to do some fancy stuff (unless I'm stupid and missing smth obvious)
+    BlockStateModelGenerator.BlockTexturePool rubyPool =
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.RUBY_BLOCK);
+
+    rubyPool.stairs(ModBlocks.RUBY_STAIRS);
+    rubyPool.slab(ModBlocks.RUBY_SLAB);
+    rubyPool.button(ModBlocks.RUBY_BUTTON);
+    rubyPool.pressurePlate(ModBlocks.RUBY_PRESSURE_PLATE);
+    rubyPool.fence(ModBlocks.RUBY_FENCE);
+    rubyPool.fenceGate(ModBlocks.RUBY_FENCE_GATE);
+    rubyPool.wall(ModBlocks.RUBY_WALL);
+
+    blockStateModelGenerator.registerDoor(ModBlocks.RUBY_DOOR);
+    blockStateModelGenerator.registerTrapdoor(ModBlocks.RUBY_TRAPDOOR);
+
+    // FIXME No rotate. I may have to do some fancy stuff (unless I'm stupid and missing smth
+    // obvious)
     blockStateModelGenerator.registerSingleton(
         ModBlocks.CONDENSED_OAK_LOG, TexturedModel.CUBE_COLUMN);
-
   }
 
   @Override
