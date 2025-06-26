@@ -23,6 +23,11 @@ public class ModBlocks {
           "condensed_oak_log",
           new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG).hardness(2.5f)));
 
+  public static final Block CONDENSED_OAK_WOOD =
+      register(
+          "condensed_oak_wood",
+          new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_WOOD).hardness(2.5f)));
+
   public static final Block RUBY_BLOCK =
       register(
           "ruby_block",

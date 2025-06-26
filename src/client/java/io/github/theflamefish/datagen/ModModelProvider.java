@@ -33,10 +33,11 @@ public class ModModelProvider extends FabricModelProvider {
     blockStateModelGenerator.registerDoor(ModBlocks.RUBY_DOOR);
     blockStateModelGenerator.registerTrapdoor(ModBlocks.RUBY_TRAPDOOR);
 
-    // FIXME No rotate. I may have to do some fancy stuff (unless I'm stupid and missing smth
-    // obvious)
-    blockStateModelGenerator.registerSingleton(
-        ModBlocks.CONDENSED_OAK_LOG, TexturedModel.CUBE_COLUMN);
+    // registerLog actually makes a texture pool; it doesn't make any blockstates
+    blockStateModelGenerator
+        .registerLog(ModBlocks.CONDENSED_OAK_LOG)
+        .log(ModBlocks.CONDENSED_OAK_LOG)
+        .wood(ModBlocks.CONDENSED_OAK_WOOD);
   }
 
   @Override

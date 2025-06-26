@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "flamefish-modding-intro:block/condensed_oak_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "flamefish-modding-intro:block/condensed_oak_wood"
+    },
+    "axis=z": {
+      "model": "flamefish-modding-intro:block/condensed_oak_wood",
+      "x": 90
+    }
+  }
+}
