@@ -1,6 +1,7 @@
 package io.github.theflamefish.datagen;
 
 import io.github.theflamefish.block.ModBlocks;
+import io.github.theflamefish.block.PrismarineLampBlock;
 import io.github.theflamefish.item.LightningStick;
 import io.github.theflamefish.item.ModArmors;
 import io.github.theflamefish.item.ModItems;
@@ -9,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Items;
+import net.minecraft.util.Identifier;
 
 public class ModModelProvider extends FabricModelProvider {
   public ModModelProvider(FabricDataOutput output) {
@@ -38,6 +40,40 @@ public class ModModelProvider extends FabricModelProvider {
         .registerLog(ModBlocks.CONDENSED_OAK_LOG)
         .log(ModBlocks.CONDENSED_OAK_LOG)
         .wood(ModBlocks.CONDENSED_OAK_WOOD);
+
+    TextureMap primarineLampOffTextureMap =
+        new TextureMap()
+            .put(TextureKey.ALL, ModelIds.getBlockModelId(PrismarineLampBlock.INSTANCE));
+
+    TextureMap primarineLampOnTextureMap =
+        new TextureMap()
+            .put(TextureKey.ALL, ModelIds.getBlockSubModelId(PrismarineLampBlock.INSTANCE, "_on"));
+
+    Identifier prismarineLampOff =
+        Models.CUBE_ALL.upload(
+            PrismarineLampBlock.INSTANCE,
+            primarineLampOffTextureMap,
+            blockStateModelGenerator.modelCollector);
+    Identifier prismarineLampOn =
+        Models.CUBE_ALL.upload(
+            ModelIds.getBlockSubModelId(PrismarineLampBlock.INSTANCE, "_on"),
+            primarineLampOnTextureMap,
+            blockStateModelGenerator.modelCollector);
+
+    BlockStateSupplier prismarineLampBlockStates =
+        VariantsBlockStateSupplier.create(PrismarineLampBlock.INSTANCE)
+            .coordinate(
+                BlockStateVariantMap.create(PrismarineLampBlock.ACTIVATED)
+                    .register(
+                        false,
+                        BlockStateVariant.create().put(VariantSettings.MODEL, prismarineLampOff))
+                    .register(
+                        true,
+                        BlockStateVariant.create().put(VariantSettings.MODEL, prismarineLampOn)));
+
+    blockStateModelGenerator.blockStateCollector.accept(prismarineLampBlockStates);
+    blockStateModelGenerator.registerParentedItemModel(
+        PrismarineLampBlock.INSTANCE, prismarineLampOff);
   }
 
   @Override

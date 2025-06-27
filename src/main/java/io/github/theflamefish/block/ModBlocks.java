@@ -128,5 +128,7 @@ public class ModBlocks {
     return register(name, block, true);
   }
 
-  public static void initialize() {}
+  public static void initialize() {
+    PrismarineLampBlock.initialize();
+  }
 }
